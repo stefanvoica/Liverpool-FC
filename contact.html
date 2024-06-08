@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Liverpool FC</title>
+  <link rel="stylesheet" href="style-liverpool.css">
+</head>
+<body id="home">
+<header>
+  <nav>
+    <a href="liverpool.html" class="logo"><img src="images/liverpool-fc-logo.png" alt="Liverpool FC Logo" height="50">Liverpool FC</a>
+    <div class="dropdown">
+      <div class="drop">Echipe
+        <div class="dropdown-content">
+          <a href="first-team.html">Echipa Principală</a>
+          <a href="youth-team.html">Echipa de Tineret</a>
+        </div>
+      </div>
+    </div>
+    <div class="dropdown">
+      <div class="drop">Știri
+        <div class="dropdown-content">
+          <a href="stire1.html">Stirea 1</a>
+          <a href="stire2.html">Stirea 2</a>
+          <a href="stire3.html">Stirea 3</a>
+        </div>
+      </div>
+    </div>
+    <a href="history.html">Istoric</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+  </nav>
+</header>
+<main>
+  <section>
+    <h2>Achiziționare Bilete</h2>
+    <p>Pentru achiziționarea de bilete la meciurile echipei Liverpool FC, puteți accesa site-ul oficial al clubului sau puteți vizita stadionul Anfield.</p>
+    <p>Biletele sunt disponibile și prin intermediul altor canale de vânzare autorizate, inclusiv agenții de bilete online și partenerii oficiali ai clubului.</p>
+  </section>
+
+  <section>
+    <h2>Întâlniri cu Fanii</h2>
+    <p>Clubul Liverpool FC organizează periodic întâlniri cu fanii pentru a oferi oportunități de a întâlni jucătorii, antrenorii și personalul echipei.</p>
+    <p>Aceste evenimente pot include sesiuni de autografe, sesiuni de întrebări și răspunsuri, precum și alte activități interactive pentru suporteri.</p>
+  </section>
+
+  <section>
+    <h2>Informații de Contact</h2>
+    <p>Pentru orice întrebări sau solicitări, vă rugăm să folosiți următoarele informații de contact:</p>
+    <address>
+      <strong>Liverpool FC</strong><br>
+      Stadionul Anfield<br>
+      Anfield Road<br>
+      Liverpool L4 0TH<br>
+      Regatul Unit<br>
+      <br>
+      Telefon: +44 (0)151 263 2361<br>
+      Email: contact@liverpoolfc.com<br>
+    </address>
+  </section>
+  <section>
+    <h2>Formular de Feedback Fan</h2>
+    <p>Vă rugăm să completați formularul de mai jos pentru a ne trimite sugestiile sau întrebările dumneavoastră:</p>
+    <form id="fan_feedback_form" enctype="multipart/form-data">
+      <fieldset>
+        <legend>Informații Personale</legend>
+        <ul>
+          <li>
+            <label for="fan_name">Nume:</label>
+            <input type="text" id="fan_name" name="fan_name" required minlength="3" maxlength="50"/>
+          </li>
+          <li>
+            <label for="fan_email">Email:</label>
+            <input type="email" id="fan_email" name="fan_email" required />
+          </li>
+          <li>
+            <label for="fan_date">Data Nașterii:</label>
+            <input type="date" id="fan_date" name="fan_date" min="1900-01-01" max="2024-12-31" required />
+          </li>
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend>Preferințe</legend>
+        <ul>
+          <li>
+            <label for="favorite_player">Jucător Favorit:</label>
+            <select id="favorite_player" name="favorite_player">
+              <option value="">Selectați un jucător</option>
+              <option value="Mohamed Salah">Mohamed Salah</option>
+              <option value="Virgil van Dijk">Virgil van Dijk</option>
+              <option value="Sadio Mane">Sadio Mane</option>
+            </select>
+          </li>
+          <li>
+            <label for="feedback">Feedback:</label>
+            <textarea id="feedback" name="feedback" rows="5" cols="50" required></textarea>
+          </li>
+        </ul>
+      </fieldset>
+      <input type="submit" value="Trimite Feedback">
+    </form>
+  </section>
+  <section>
+    <h2>Terenul Anfield</h2>
+    <p>Explorați dispunerea stadionului Anfield și familiarizați-vă cu configurarea terenului nostru de fotbal:</p>
+    <object type="image/svg+xml" data="football_pitch.svg" width="1000" height="750">Terenul de fotbal nu poate fi încărcat.</object>
+  </section>
+  <marquee behavior="alternate" scrollamount="40">
+    <marquee behavior="alternate" direction="down" scrollamount="40">
+      <img src="images/ball.jpeg" class="ball" alt="Football">
+    </marquee>
+  </marquee>
+</main>
+<footer>
+  <p>&copy; 2024 Liverpool F.C. Toate drepturile rezervate.</p>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const feedbackForm = document.getElementById('fan_feedback_form');
+    feedbackForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const formData = new FormData(feedbackForm);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+
+      fetch('http://localhost:3000/feedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (!response.ok) {
+          return response.text().then(text => { throw new Error(text) });
+        }
+        return response.json();
+      })
+      .then(data => {
+        alert('Feedback trimis cu succes!');
+      })
+      .catch(error => {
+        alert('Eroare: ' + error.message);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

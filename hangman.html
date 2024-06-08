@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joacă-te - Hangman | Liverpool FC</title>
+    <link rel="stylesheet" href="style-liverpool.css">
+</head>
+<body>
+<header>
+    <nav>
+        <a href="liverpool.html" class="logo"><img src="images/liverpool-fc-logo.png" alt="Liverpool FC Logo" height="50">Liverpool FC</a>
+        <div class="dropdown">
+            <div class="drop">Echipe
+                <div class="dropdown-content">
+                    <a href="first-team.html">Echipa Principală</a>
+                    <a href="youth-team.html">Echipa de Tineret</a>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown">
+            <div class="drop">Știri
+                <div class="dropdown-content">
+                    <a href="stire1.html">Stirea 1</a>
+                    <a href="stire2.html">Stirea 2</a>
+                    <a href="stire3.html">Stirea 3</a>
+                </div>
+            </div>
+        </div>
+        <a href="history.html">Istoric</a>
+        <a href="hangman.html">Joacă-te</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+<main style="text-align: center;">
+    <h1 style="font-size: 2.5em;">Joc Hangman - Ghicește jucătorii Liverpool FC</h1>
+    <div id="timer">Timp Rămas: 5:59</div>
+
+    <div id="game-area">
+        <div id="incercari" style="font-size: 1.5em;">Numar Incercari: 0</div>
+        <div id="cuvant" style="font-size: 2em;">----</div>
+        <input type="text" id="litera" maxlength="1" placeholder="Introduceți o literă" style="font-size: 1.5em;">
+        <br><br>
+        <button id="submit-button" style="font-size: 1.5em;">Verifica litera</button>
+        <button onclick="location.reload();" style="font-size: 1.5em;">Resetare Joc</button>
+    </div>
+    <div id="player-image" style="margin-top: 20px;">
+        <img id="player-photo" src="" alt="Player Image" height="200">
+    </div>
+
+</main>
+<footer>
+    <p>&copy; 2024 Liverpool FC. Toate drepturile rezervate.</p>
+</footer>
+<script src="hangman.js"></script>
+</body>
+</html>

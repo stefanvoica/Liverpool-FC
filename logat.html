@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logare reușită</title>
+    <link rel="stylesheet" href="logat.css" />
+  </head>
+  <body>
+    <h2>Logare reușită</h2>
+    <div class="container">
+      <p class="success-message">Ai fost logat cu succes!</p>
+      <button id="logoutBtn">Deconectare</button>
+    </div>
+
+    <h2>Meciuri:</h2>
+    <div class="container" id="matches"></div>
+    <footer>
+      <p>&copy; 2024 Liverpool FC. Toate drepturile rezervate.</p>
+    </footer>
+
+    <script>  
+      document.getElementById("logoutBtn").onclick = function () {
+        localStorage.removeItem("matches");
+        window.location.href = "login.html";
+      };
+
+      window.onload = function () {
+        fetch("matches.json")
+          .then((response) => response.json())
+          .then((data) => {
+            let container = document.getElementById("matches");
+            // add data to localStorage 
+            localStorage.setItem("matches", JSON.stringify(data));
+            data.forEach((match) => {
+              console.log(match);
+              let matchElement = document.createElement("div");
+              // matchElement.classList.add("match");
+              matchElement.innerHTML = `
+            <img src="${match.homeflag}" alt="${match.home}" width="100">
+            <span>${match.home}</span>
+            <span>vs</span>
+            <img src="${match.guestflag}" alt="${match.guest}" width="100">
+            <span>${match.guest}</span>
+            <p>Date: ${match.date}</p>
+            <p>Time: ${match.time}</p>
+          `;
+              container.appendChild(matchElement);
+            });
+          });
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+body {
+  background-color: white;
+  margin: 0;
+  font-family: "Arial", sans-serif;
+}
+
+h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 5px;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+p.success-message {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #4CAF50;
+}
+
+footer {
+  background-color: #dd0000;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+
+#logoutBtn {
+  background-color: #dd0000;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+}
